@@ -1,0 +1,213 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MainPage(),
+        '/second': (context) => SecondRoute(),
+        '/third': (context) => ThirdRoute(),
+        '/fourth': (context) => FourthRoute(),
+        '/fifth': (context) => FifthRoute(),
+        '/sixth': (context) => SixthRoute(),
+        '/signup': (context) => SignUpPage(),
+      },
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('앤데이 홈페이지'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                '앤데이',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              color: Colors.blue,
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/third');
+                    },
+                    child: Text('로그인', style: TextStyle(fontSize: 18)),
+                  ),
+                  SizedBox(width: 8), // 간격 추가
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/signup');
+                    },
+                    child: Text('회원가입', style: TextStyle(fontSize: 18)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/fourth');
+                    },
+                    child: Text('쇼핑하기', style: TextStyle(fontSize: 18)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/fifth');
+                    },
+                    child: Text('상담기록 확인', style: TextStyle(fontSize: 18)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/sixth');
+                    },
+                    child: Text('추가기능', style: TextStyle(fontSize: 18)),
+                  ),
+                ],
+              ),
+            ),
+            _buildPreviewBox('로그인', context),
+            _buildPreviewBox('쇼핑하기', context),
+            _buildPreviewBox('상담기록 확인', context),
+            _buildPreviewBox('추가기능', context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPreviewBox(String buttonText, BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.24,
+      padding: EdgeInsets.all(16),
+      margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(buttonText, style: TextStyle(fontSize: 18)),
+          SizedBox(height: 8),
+          Text('페이지 ${_getPageNumber(buttonText)}', style: TextStyle(fontSize: 14, color: Colors.grey)),
+        ],
+      ),
+    );
+  }
+
+  String _getPageNumber(String buttonText) {
+    switch (buttonText) {
+      case '로그인':
+        return 'Third';
+      case '쇼핑하기':
+        return 'Fourth';
+      case '상담기록 확인':
+        return 'Fifth';
+      case '추가기능':
+        return 'Sixth';
+      default:
+        return '';
+    }
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Second Route'),
+      ),
+      body: Center(
+        child: Text('Second Route'),
+      ),
+    );
+  }
+}
+
+class ThirdRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Third Route'),
+      ),
+      body: Center(
+        child: Text('Third Route'),
+      ),
+    );
+  }
+}
+
+class FourthRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Fourth Route'),
+      ),
+      body: Center(
+        child: Text('Fourth Route'),
+      ),
+    );
+  }
+}
+
+class FifthRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Fifth Route'),
+      ),
+      body: Center(
+        child: Text('Fifth Route'),
+      ),
+    );
+  }
+}
+
+class SixthRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Sixth Route'),
+      ),
+      body: Center(
+        child: Text('Sixth Route'),
+      ),
+    );
+  }
+}
+
+class SignUpPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('회원가입하기'),
+      ),
+      body: Center(
+        child: Text('회원가입 페이지 내용'),
+      ),
+    );
+  }
+}
